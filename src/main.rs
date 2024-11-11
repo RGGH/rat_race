@@ -9,7 +9,7 @@ use std::{thread, time::Duration};
 const NUM_LANES: usize = 4;
 const FINISH_LINE: usize = 79; // Finish line at column 20
 
-const SELECTIONS: [&str; 2] = ["PLAY", "EXIT"];
+const SELECTIONS: [&str; 2] = ["PLAY AGAIN", "EXIT"];
 
 // Colors for each lane
 const COLORS: [&str; NUM_LANES] = [
@@ -37,7 +37,8 @@ fn main() {
             \   /|\   /
              \_______/"
         );
-
+        println!("{}", "© PI Software Solutions MCMLXXXI");
+        println!("----------------------------------");
         println!("Welcome to the Rat Race!");
         println!("There are 4 lanes. Guess which one will reach the finish line first!");
 
@@ -149,7 +150,7 @@ fn loading() {
         // Explicitly flush stdout to ensure the output updates immediately
         io::stdout().flush().unwrap();
 
-        thread::sleep(time::Duration::from_millis(300)); // Wait 500ms between updates
+        thread::sleep(time::Duration::from_millis(230)); // Wait 500ms between updates
     }
 
     // Ensure the last "LOADING......" stays
