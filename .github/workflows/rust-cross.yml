@@ -1,4 +1,4 @@
-name: Rust Cross Compile for Raspberry Pi 5 (ARM64)
+name: Rust Cross Compile for Raspberry Pi 5 (ARM64) and Windows (x86_64)
 
 on:
   push:
@@ -29,8 +29,18 @@ jobs:
     - name: Build for ARM64 (Raspberry Pi 5)
       run: cross build --target aarch64-unknown-linux-gnu --release
 
-    - name: Upload artifact (optional)
+    - name: Upload artifact for Raspberry Pi
       uses: actions/upload-artifact@v3
       with:
         name: pi-build
         path: target/aarch64-unknown-linux-gnu/release/rat_race
+
+    - name: Build for Windows (x86_64)
+      run: cross build --target x86_64-pc-windows-gnu --release
+
+    - name: Upload artifact for Windows
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-build
+        path: target/x86_64-pc-windows-gnu/release/rat_race
+
